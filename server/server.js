@@ -90,7 +90,7 @@ app.get('/suppPatients/:id',(req,res)=>{
 app.post('/ajoutPatient',(req,res)=>{
   const nouveauPatient=req.body
   console.log(nouveauPatient)
-  connection.query('INSERT INTO patient (nom, prenom, date_naissance, etat_general, adresse, telephone) VALUES (\''+nouveauPatient.nom+'\', \''+nouveauPatient.prenom+'\', \''+nouveauPatient.date_naissance+'\', \''+nouveauPatient.etat_general+'\', \''+nouveauPatient.adresse+'\', \''+nouveauPatient.telephone+'\')',(error,results)=>{
+  connection.query('INSERT INTO patient (nom, prenom, date_naissance, etat_general, adresse, telephone, inscri) VALUES (\''+nouveauPatient.nom+'\', \''+nouveauPatient.prenom+'\', \''+nouveauPatient.date_naissance+'\', \''+nouveauPatient.etat_general+'\', \''+nouveauPatient.adresse+'\', \''+nouveauPatient.telephone+'\' , now())',(error,results)=>{
     if (error) throw error;
     res.send(results)
   })
