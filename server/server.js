@@ -96,7 +96,14 @@ app.post('/ajoutPatient',(req,res)=>{
   })
 })
 
-
+app.post('/editPatient',(req,res)=>{
+  const Patient=req.body
+  console.log(Patient)
+  connection.query('update patient set nom=\''+Patient.nom+'\', prenom=\''+Patient.prenom+'\', date_naissance=\''+Patient.date_naissance+'\', etat_general=\''+Patient.etat_general+'\', adresse=\''+Patient.adresse+'\', telephone =\''+Patient.telephone+'\' where id='+Patient.id+' ',(error,results)=>{
+    if (error) throw error;
+    res.send(results)
+  })
+})
 
 app.get('/*', (req, res) => { 
     //res.send(path.join(__dirname, '../client/public', 'index.html'))
